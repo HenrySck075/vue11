@@ -42,6 +42,7 @@
             </div>
           </div>
         </slot>
+        <div id="menus"></div>
         <div style="background-color: transparent; color: black"><slot></slot></div>
       </div>
     </vue-resizable>
@@ -107,38 +108,46 @@ export default {
 
 <style>
 
-.container {
-  width: 300px;
-  height: 300px;
-  display: inline-block;
-  border: 1px solid #dddddd;
-  background: #ffffff;
-  color: #333333;
-  float: left;
-  margin: 10px;
-}
+  .container {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    border: 1px solid #dddddd;
+    background: #ffffff;
+    color: #333333;
+    float: left;
+    margin: 10px;
+  }
 
 
-.resizable {
-  background-position: top left;
-  width: 150px;
-  height: 150px;
-  padding: 0;
-  border: 1px solid #003eff;
-  background: #007fff;
-  font-weight: normal;
-  color: #ffffff;
-  position: relative;
-  display:inline
-}
-.action {
-  transition: background-color 0.2s ease-in-out;
-  width: 16px
-}
-.close:hover {
-  background-color: red;
-}
-.otter:hover {
-  background-color: rgba(160,160,160,0.4);
-}
+  .resizable {
+    background-position: top left;
+    width: 150px;
+    height: 150px;
+    padding: 0;
+    border: 1px solid #003eff;
+    background: #007fff;
+    font-weight: normal;
+    color: #ffffff;
+    position: relative;
+    display:inline
+  }
+  .action {
+    transition: background-color 0.2s ease-in-out;
+    width: 16px
+  }
+  .close:hover {
+    background-color: red;
+  }
+  .otter:hover {
+    background-color: rgba(160,160,160,0.4);
+  }
+  .window {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 </style>

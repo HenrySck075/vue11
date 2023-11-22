@@ -1,4 +1,4 @@
-<template>
+<template v-slot="*">
     <button :class="[shape, appearance, hasLabel?'':'iconOnly']" :aria-disabled="disabledFocusable">
       <fluent-icon v-if="iconPosition=='before' && icon" :icon="icon" id="icon" class="before"></fluent-icon>
       <slot />

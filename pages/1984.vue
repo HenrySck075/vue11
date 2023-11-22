@@ -2,15 +2,21 @@
   <div :data-theme="theme" style="position: fixed; left: 0; top: 0;width: 100vw; height: 100vh" :style="{backgroundColor:bg}">
     <button @click="c" style="color:black">Toggle dark theme</button>
     <div style="width: 100%; height: 100%">
-      <fluent-button>drren</fluent-button>
-      <fluent-button appearance="primary">drren</fluent-button>
-      <fluent-button appearance="outline">drren</fluent-button>
-      <fluent-button appearance="subtle" icon-position="after" icon="wifi">drren</fluent-button>
-      <fluent-button appearance="transparent" icon-position="before" icon="wifi">drren</fluent-button>
-      <div style="height:48px"></div>
-      <fluent-button icon-position="after" icon="calendar">Icon before label</fluent-button>
-      <fluent-button icon-position="before" icon="calendar">Icon after label</fluent-button>
-      <fluent-button icon="calendar"></fluent-button>
+      <fluent-menu-list :items="[{text: 'insert cash'}, {text:'or select'}, {text: 'payment type'}]"></fluent-menu-list>
+      <fluent-menu :persist-on-item-click="true">
+        <fluent-button>Click now</fluent-button>
+        <template v-slot:menuitem>
+          <fluent-menu-item>insert cash</fluent-menu-item>
+          <fluent-menu-item icon="search">or select</fluent-menu-item>
+          <fluent-menu>
+            <fluent-menu-item :hasIcons="true">payment type</fluent-menu-item>
+            <template v-slot:menuitem>
+              <fluent-menu-item>geometry dash reference</fluent-menu-item>
+            </template>
+          </fluent-menu>
+        </template>
+      </fluent-menu>
+      <div id="menus" style="width: 100vw; height: 100vh"></div>
     </div>
   </div>
 </template>

@@ -27,7 +27,13 @@
           </fluent-input>
         </div>
         <div style="display:flex; justify-content: end; position: fixed; bottom: 16px; right: 16px;" id="deviceStatus">
-          <fluent-button icon="powerbutton" @click="$nuxt.$shutdown"></fluent-button>
+          <fluent-menu>
+            <fluent-button icon="powerbutton"></fluent-button>
+            <template v-slot:menuitem>
+              <fluent-menu-item icon="powerbutton" @click="$nuxt.$shutdown">Shut down</fluent-menu-item>
+              <fluent-menu-item icon="refresh">Restart</fluent-menu-item>
+            </template>
+          </fluent-menu>
         </div>
       </div>
     </div>

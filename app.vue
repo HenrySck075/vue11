@@ -14,14 +14,6 @@ html {
   * {
     font-family: 'Segoe UI', sans-serif;
   }
-  .window {
-    flex: 1;
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
   ::-webkit-scrollbar-track {
     border-radius: 8px;
     background-color: #F7F7F7;
