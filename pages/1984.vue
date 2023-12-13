@@ -1,24 +1,18 @@
 <template>
-  <div :data-theme="theme" style="position: fixed; left: 0; top: 0;width: 100vw; height: 100vh" :style="{backgroundColor:bg}">
+  <fluent-provider theme="theme" style="position: fixed; left: 0; top: 0;width: 100vw; height: 100vh" :style="{backgroundColor:bg}">
     <button @click="c" style="color:black">Toggle dark theme</button>
     <div style="width: 100%; height: 100%">
       <fluent-menu-list :items="[{text: 'insert cash'}, {text:'or select'}, {text: 'payment type'}]"></fluent-menu-list>
-      <fluent-menu :persist-on-item-click="true">
+      <fluent-menu >
         <fluent-button>Click now</fluent-button>
         <template v-slot:menuitem>
           <fluent-menu-item>insert cash</fluent-menu-item>
           <fluent-menu-item icon="search">or select</fluent-menu-item>
-          <fluent-menu>
-            <fluent-menu-item :hasIcons="true">payment type</fluent-menu-item>
-            <template v-slot:menuitem>
-              <fluent-menu-item>geometry dash reference</fluent-menu-item>
-            </template>
-          </fluent-menu>
+          <fluent-menu-item-submenu :hasIcons="true" :items="[{text:'check steam'}]">payment type</fluent-menu-item-submenu>
         </template>
       </fluent-menu>
-      <div id="menus" style="width: 100vw; height: 100vh"></div>
     </div>
-  </div>
+  </fluent-provider>
 </template>
 <script setup>
   const theme = ref("light")

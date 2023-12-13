@@ -16,7 +16,7 @@
   console.log(!!items)
   const emit = defineEmits(["itemClicked"])
   onMounted(()=>{
-    document.querySelectorAll("[role=menu] .menuitem").forEach(e=>{
+    document.querySelectorAll("[role=menu] > .menuitem").forEach(e=>{
       e.addEventListener("click", ()=>{
         console.log(":D")
         emit("itemClicked")

@@ -1,3 +1,3 @@
 <template>
-  <logonui></logonui>
+  <logonui data-theme="dark"></logonui>
 </template>

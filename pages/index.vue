@@ -3,11 +3,13 @@
     <Logonui style="z-index: 3000" @logindone="()=>{logindone = true}" />
     <div style="height: 100vh; max-height: 100vh" class="dwm" v-show="logindone" @click.self="moom()">
       <img :src="wallpaper" alt="Windows desktop wallpaper" style="position: fixed; position-anchor: 50% 0; top: 0; left: 0; width: 100%; height:100%; object-fit: cover; pointer-events: none;">
+
       <div style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: start; flex-wrap: wrap; flex-direction: column;">
         <template v-for="v in desktopicons">
           <DesktopIcon :icon="v.icon" :label="v.label.slice(0,-5)" :callback="v.cb" :isShortcut="v.label.includes('.lnk')||v.label.includes('.url')"></DesktopIcon>
         </template>
       </div>
+
       <transition-group tag="div" name="win" class="ok" style="position: fixed; top: 0vw; left: 0vh; width: 100vw; height: 100vh; pointer-events: none;">
         <template v-for="(v,k) in windows" :key="k">
           <component :is="v.comp" v-bind="v.props" @close="closeWindow(k)" @mousedown="(e)=>setHigherZ(e.target)"></component>
@@ -160,6 +162,7 @@
     occupiedKeys.icons.splice(occupiedKeys.icons.indexOf(key),1)
   }
   addIcon("iefjjife", "", ()=>addWindow('whatthehell'))
+  addIcon("skakakkam", "", ()=>setInterval(()=>addWindow('whatthehell'),2000))
   const config = reactive({
     theme: "dark"
   })

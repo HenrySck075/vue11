@@ -33,6 +33,7 @@
     cursor: pointer;
     gap: 4px;
     user-select: none;
+    overflow: hidden;
   }
   .menuitem:hover {
     background-color: var(--colorNeutralBackground1Hover);
@@ -41,6 +42,7 @@
   .milabel {
     padding-left: 2px;
     padding-right: 2px;
+    padding-top: -1px;
     background-color: transparent;
     flex-grow: 1;
   }

@@ -27,14 +27,15 @@
           </fluent-input>
         </div>
         <div style="display:flex; justify-content: end; position: fixed; bottom: 16px; right: 16px;" id="deviceStatus">
-          <fluent-menu>
+          <windows-menu placement="top" style="">
             <fluent-button icon="powerbutton"></fluent-button>
             <template v-slot:menuitem>
               <fluent-menu-item icon="powerbutton" @click="$nuxt.$shutdown">Shut down</fluent-menu-item>
               <fluent-menu-item icon="refresh">Restart</fluent-menu-item>
             </template>
-          </fluent-menu>
+          </windows-menu>
         </div>
+        <div id="menus" style="width:100vw; height:100vh;position:fixed;top:0;left:0;z-index: 200;pointer-events: none;"></div>
       </div>
     </div>
 </template>
@@ -44,10 +45,12 @@
   const emit = defineEmits(["logindone"])
   function login() {
     emit("logindone")
-    document.querySelector(".logonui").style.opacity = 0
     setTimeout(()=>{
-      logindone.value = true
-    },1000)
+      document.querySelector(".logonui").style.opacity = 0
+      setTimeout(()=>{
+        logindone.value = true
+      },1000)
+    },2000)
   }
   
   const connection = navigator.connection
@@ -93,9 +96,9 @@
     margin-left: 8px;
     margin-right: 8px
   }
-  .logonui > * {pointer-events:auto}
+  .logonui > *, #menus > * {pointer-events:auto}
   .logonui {
-    transition: opacity 1s ease-out;
+    transition: opacity 0.2s ease-out;
     opacity: 1
   }
   div >* {

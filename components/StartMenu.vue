@@ -1,5 +1,5 @@
 <template>
-  <micadiv style="width: 500px; height: 520px; max-height: 520px; overflow: hidden;" :style="{'top': toggled ? 'calc(100vh - 320px)' : 'calc(100vh + 520px)', 'left':centerAligned ? '50%': '12px', 'transform': 'translate('+(centerAligned?'-50%':'0')+', -50%)', 'transition': 'top 0.2s '+(toggled ?'cubic-bezier(0.5, 1, 0.89, 1)' : 'cubic-bezier(0.01, 0, 0.5, 0)' )} " >
+  <micadiv style="width: 500px; height: 520px; max-height: 520px; overflow: hidden;" :style="{'bottom': toggled ? '320px' : 'calc(-100vh + 320px)', 'left':centerAligned ? '50%': '12px', 'transform': 'translate('+(centerAligned?'-50%':'0')+', 50%)', 'transition': 'bottom 0.2s '+(toggled ?'cubic-bezier(0.5, 1, 0.89, 1)' : 'cubic-bezier(0.01, 0, 0.5, 0)' )} " >
     <micadiv style="background-color: rgba(0,0,0,0.02); width: 100%; height: 55px; bottom: 0; left: 0; border-top-color: gray"></micadiv>
     <div style="padding: 36px;">
       <fluent-input style="width:428px" placeholder="Type here to search">
