@@ -10,6 +10,8 @@ export default defineNuxtConfig({
       "~/components",
     ]
   },
+  modules: ["floating-vue/nuxt", "@vueuse/nuxt"],
   ssr: false,
-  devtools: { enabled: false },
+  plugins: ["~/plugins/jquery.js"],
+  devtools: { enabled: true },
 })

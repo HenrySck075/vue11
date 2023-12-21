@@ -1,7 +1,17 @@
-# Fluctlight, an another Vue implementation* of Fluent Design
-\* (i copied the stylesheet from fd react guidance) 
-
+﻿# Fluctlight, an another Vue implementation* of Fluent Design
+* (i copied the stylesheet from fd react guidance page lmao lmao) 
 # Components
-| Completed                                                                                                                                                                                                                                                                                          | Not finished | Not started |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------|-------------|
-| - [Button](button.vue)<br>- [Icon](icon.vue) (not a part of the spec but ok)<br>- Menu<br>  + [Menu (and popover)](menu.vue)<br>  + Menu Item<br>    + [Menu Item](menu-item.vue)<br>    + [the one with submenu](menu-item-submenu.vue)<br>  + [Menu List](menu-list.vue)<br>- [Input](input.vue) |              |             |
+- [ ] Accordion
+- [ ] Avatar
+- [ ] AvatarGroup
+- [ ]  Badge
+- [x] [Button](button.vue)
+- [x] [Icon](icon.vue)
+- [x] [Input](input.vue)
+- [x] [Menu](menu.vue)
+  + [x] [MenuItem](menu-item.vue)
+    • [x] [MenuItemSubmenu](menu-item-submenu.vue)
+  + [x] [MenuList](menu-list.vue)
+- [ ] [MessageBar](messagebar.vue)
+- [x] [Popover](popover.vue)
+- [x] [Provider](provider.vue)

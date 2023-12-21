@@ -1,4 +1,3 @@
-imagine
 
 # "but theres win11 in react why this one"
 duh its a demo
@@ -14,78 +13,11 @@ The most reasonable windows 11 build ever (!!!!)
 - soy admin
 - 5mb of disk space (planned to be extended via file storage api)
 
-# Nuxt 3 Minimal Starter
+# Developing
 
-Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Look at the [Nuxt 3 documentation](https://nuxt.com/docs/getting-started/introduction) for instructions
 
-## Setup
-
-Make sure to install the dependencies:
-
-```bash
-# npm
-npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
-```
-
-## Development Server
-
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
-npm run dev
-
-# pnpm
-pnpm run dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm run build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm run preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+# Supporting this silly teenager boy
+As ^ implies, im just a random person that you can find that does some random stuff online
+so most i can ask for is [a subscribe on my channel which posts new content "when i can"/week :)](https://youtube.com/@henrysck075?feature=shared)
+sounds dumb but if you do, tysm :3

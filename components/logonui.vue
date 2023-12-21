@@ -1,10 +1,12 @@
 <template>
+  <fluent-provider theme="dark">
     <div class="logonui" style="width:100%; height:100%; overflow:hidden; pointer-events: none" v-if="!logindone" @keydown.esc="cc">
       <img :src="wallpaper" class="w" style="position: fixed; position-anchor: 50% 0; top: 0; left: 0; width: 100%; height:100%; object-fit: cover; pointer-events: none; z-index:100">
-      <div class="lock" style="width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:200" >
-        <div style="position:relative;top:25%; left:50%;transform: translate(-50%,-50%);display:flex;justify-content:center;flex-wrap: wrap; width:250px"  @click="c">
-          <h2 style="font-size: 80px; margin:0">{{time}}</h2>
-          <p style="font-size:23px; margin:0">{{date}}</p>
+      <fluent-button @click="c()">me</fluent-button>
+      <div class="lock" style="width:100vw;height:100vh;position:fixed;top:0;left:0;z-index:200" ref="lock">
+        <div style="position:relative;top:25%; left:50%;transform: translate(-50%,-50%);display:flex;justify-content:center;flex-wrap: wrap; width:250px">
+          <h2 style="font-size: 80px; margin:0; pointer-events:none">{{time}}</h2>
+          <p style="font-size:23px; margin:0;pointer-events: none;">{{date}}</p>
         </div>
         <div style="display:flex; justify-content: end; position: absolute; bottom: 16px; right: 16px;" id="deviceStatus">
           <!--<template v-if="batteryStatus.dischargingTime !== Infinity">-->
@@ -27,22 +29,54 @@
           </fluent-input>
         </div>
         <div style="display:flex; justify-content: end; position: fixed; bottom: 16px; right: 16px;" id="deviceStatus">
-          <windows-menu placement="top" style="">
+          <fluent-menu placement="top" style="">
             <fluent-button icon="powerbutton"></fluent-button>
             <template v-slot:menuitem>
               <fluent-menu-item icon="powerbutton" @click="$nuxt.$shutdown">Shut down</fluent-menu-item>
               <fluent-menu-item icon="refresh">Restart</fluent-menu-item>
             </template>
-          </windows-menu>
+          </fluent-menu>
         </div>
         <div id="menus" style="width:100vw; height:100vh;position:fixed;top:0;left:0;z-index: 200;pointer-events: none;"></div>
       </div>
     </div>
+  </fluent-provider>
 </template>
 
 <script setup>
-  const logindone = ref(false)
-  const emit = defineEmits(["logindone"])
+  import {useSwipe,usePointerSwipe,useBreakpoints,breakpointsVuetify} from "@vueuse/core"
+  const lock = ref()
+  console.log(lock)
+  
+  
+  const height = computed(()=>lock.value?.offsetHeight)
+  const mimimi = watch(lock,(e)=>{
+    function onSwipe(ly) {
+        if (height.value) {
+          if (ly.value > 0) {
+            const length = Math.abs(ly.value)
+            e.style.top = `-${length}px`
+            e.style.opacity = 1.1 - length / height.value
+          }
+          else {
+            e.style.top = '0'
+            e.style.opacity = 1
+          }
+        }
+      
+    }
+    function onSwipeEnd(ly) {
+      (height.value && Math.abs(ly.value)/height.value >= 0.5) ? c() : cc()
+    }
+    if (useBreakpoints(breakpointsVuetify).greaterOrEqual("lg")) {
+      const {distanceY:ly} = usePointerSwipe(lock,{disableTextSelect:true,onSwipe:()=>onSwipe(ly),onSwipeEnd:()=>onSwipeEnd(ly)})
+    }
+    else {
+      const {lengthY:ly} = useSwipe(lock, {passive: false,onSwipe:()=>onSwipe(ly),onSwipeEnd:()=>onSwipeEnd(ly)})
+    }
+
+    mimimi()
+  })
   function login() {
     emit("logindone")
     setTimeout(()=>{
@@ -53,6 +87,8 @@
     },2000)
   }
   
+  const logindone = ref(false)
+  const emit = defineEmits(["logindone"])
   const connection = navigator.connection
   const batteryStatus = await navigator.getBattery()
   const ns = useNuxtApp().$ns
@@ -79,12 +115,14 @@
 
   function c() {
     document.querySelector(".lock").style.top = "-100vh"
+    document.querySelector(".lock").style.opacity = "0"
     document.querySelector(".w").classList.add("pan")
     document.querySelector(".login").style.opacity=1
     timeoutID = setTimeout(cc, 60000)
   }
   function cc() {
     document.querySelector(".lock").style.top = "0vh"
+    document.querySelector(".lock").style.opacity = "1"
     document.querySelector(".w").classList.remove("pan")
     document.querySelector(".login").style.opacity=0
     clearTimeout(timeoutID) 
