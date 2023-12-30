@@ -15,3 +15,5 @@
 - [ ] [MessageBar](messagebar.vue)
 - [x] [Popover](popover.vue)
 - [x] [Provider](provider.vue)
+- [x] [Skeleton](skeleton.vue)
+- [x] [Slider](slider.vue)

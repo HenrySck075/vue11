@@ -54,6 +54,8 @@ html {
 </style>
 
 <script setup>
+  import ficons from "@fluentui/svg-icons/icons/cellular_3g_20_regular.svg"
+  
   const ns = {
     getData(key, defaultV="") {
       try{return JSON.parse(window.localStorage.getItem(key))} 

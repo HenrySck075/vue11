@@ -7,22 +7,27 @@
           <fluent-icon icon="search"></fluent-icon>
         </template>
       </fluent-input>
-      <div style="padding-top:12px">
-        <div style="display:flex">
-          <p style="width: 290px; font-weight: bold; margin-left:20px">Pinned</p>
-          <fluent-button style="height:30px; margin-top: auto; margin-bottom: auto; font-size:12px"  icon="ChevronRight" icon-position="after">All apps</fluent-button>
+      <fluent-page :page="p">
+        <div style="padding-top:12px" page="main">
+          <div style="display:flex">
+            <p style="width: 290px; font-weight: bold; margin-left:20px">Pinned</p>
+            <fluent-button style="height:30px; margin-top: auto; margin-bottom: auto; font-size:12px" @click="p='all'" icon="ChevronRight" icon-position="after">All apps</fluent-button>
+          </div>
+          <div style="display: flex; flex-wrap: wrap">
+            <StartMenuPinnedItem label="holy" />
+            <StartMenuPinnedItem label="hell" />
+            <StartMenuPinnedItem label="new" />
+            <StartMenuPinnedItem label="response" />
+            <StartMenuPinnedItem label="just" />
+            <StartMenuPinnedItem label="dropped" />
+            <StartMenuPinnedItem label="actual" />
+            <StartMenuPinnedItem label="zombie" />
+          </div>
         </div>
-        <div style="display: flex; flex-wrap: wrap">
-          <StartMenuPinnedItem label="holy" />
-          <StartMenuPinnedItem label="hell" />
-          <StartMenuPinnedItem label="new" />
-          <StartMenuPinnedItem label="response" />
-          <StartMenuPinnedItem label="just" />
-          <StartMenuPinnedItem label="dropped" />
-          <StartMenuPinnedItem label="actual" />
-          <StartMenuPinnedItem label="zombie" />
+        <div style="padding-top:12px" page="all">
+          what do you think
         </div>
-      </div>
+      </fluent-page>
     </div>
   </micadiv>
 </template>
@@ -30,4 +35,5 @@
 <script setup>
   const {align,toggled} = defineProps(["align","toggled"])
   const centerAligned = computed(()=>align == "center")
+  const p = ref("main")
 </script>

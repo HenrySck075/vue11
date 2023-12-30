@@ -4,7 +4,7 @@
     <div style="height: 100vh; max-height: 100vh" class="dwm" v-show="logindone" @click.self="moom()">
       <img :src="wallpaper" alt="Windows desktop wallpaper" style="position: fixed; position-anchor: 50% 0; top: 0; left: 0; width: 100%; height:100%; object-fit: cover; pointer-events: none;">
 
-      <div style="position:fixed; top: 0; left: 0; width: 100%; height: 100%; display: flex; justify-content: start; flex-wrap: wrap; flex-direction: column;">
+      <div style="position:fixed; top: 0; left: 0; height: 100%; display: flex; justify-content: start; flex-wrap: wrap; flex-direction: column;">
         <template v-for="v in desktopicons">
           <DesktopIcon :icon="v.icon" :label="v.label.slice(0,-5)" :callback="v.cb" :isShortcut="v.label.includes('.lnk')||v.label.includes('.url')"></DesktopIcon>
         </template>
@@ -25,7 +25,7 @@
             <p style="margin: 0; text-align: right; font-size: 14px">{{date}}</p>
           </div>
         </div>
-        <div style="display: flex; justify-content:center; margin-top:9px">
+        <transition-group tag="div" style="display: flex; justify-content:center; margin-top:9px" name="taskbar">
           <TaskbarIcon @click="start">
             <svg viewBox="0 0 14 14" style="width: 29px" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
               <defs>
@@ -68,7 +68,7 @@
               <path style="fill-rule: nonzero; stroke-opacity: 0; stroke: url('#gradient-2'); paint-order: fill; fill: url('#gradient-6');" d="M 7.28 7.28 H 14 V 13 A 1 1 0 0 1 13 14 H 7.28 V 7.28 Z" bx:shape="rect 7.28 7.28 6.72 6.72 0 0 1 0 1@eb786105"></path>
             </svg>
           </TaskbarIcon>
-        </div>
+        </transition-group>
       </micadiv>
     </div>
   </div>
@@ -161,18 +161,25 @@
     delete desktopicons.value[key]
     occupiedKeys.icons.splice(occupiedKeys.icons.indexOf(key),1)
   }
+  let registeredExec = {}
+  let procMap = []
+  function spawnProcess(name, ...params) {
+    registeredExec[name](...params)
+  }
+
   addIcon("iefjjife", "", ()=>addWindow('whatthehell'))
+  function Ad(){addIcon("Add Icon", "",Ad)}
+  addIcon("Add Icon", "", Ad)
+  addIcon("Playground", "", ()=>addWindow('onef'))
   addIcon("skakakkam", "", ()=>setInterval(()=>addWindow('whatthehell'),2000))
   const config = reactive({
     theme: "dark"
   })
-  try {
-    d.provide("winconfig",config)
-    d.provide("addWindow", addWindow)
-    d.provide("closeWindow", closeWindow)
-    d.provide("addIcon", addIcon)
-    d.provide("deleteIcon", deleteIcon)
-  } catch {}
+  provide("winconfig",config)
+  provide("addWindow", addWindow)
+  provide("closeWindow", closeWindow)
+  provide("addIcon", addIcon)
+  provide("deleteIcon", deleteIcon)
 
 
 
@@ -207,4 +214,12 @@
   .logonui-leave-active {
     transition: opacity 0.2s ease-out
   }
+
+  .taskbar-enter-active {
+    transition: top 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  .taskbar-move {
+    transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
 </style>

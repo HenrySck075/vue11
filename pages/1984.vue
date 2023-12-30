@@ -1,8 +1,9 @@
 <template>
-  <fluent-provider theme="theme" style="position: fixed; left: 0; top: 0;width: 100vw; height: 100vh" :style="{backgroundColor:bg}">
+  <fluent-provider :theme="theme" style="position: fixed; left: 0; top: 0;width: 100vw; height: 100vh" :style="{backgroundColor:bg}">
     <button @click="c" style="color:black">Toggle dark theme</button>
     <div style="width: 100%; height: 100%">
-      <fluent-menu-list :items="[{text: 'insert cash'}, {text:'or select'}, {text: 'payment type'}]"></fluent-menu-list>
+      <fluent-slider></fluent-slider>
+      <fluent-menu-list :items="[{text: 'insert cash', icon:'cellular_3g'}, {text:'or select'}, {text: 'payment type'}]"></fluent-menu-list>
       <fluent-menu >
         <fluent-button>Click now</fluent-button>
         <template v-slot:menuitem>

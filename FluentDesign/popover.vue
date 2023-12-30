@@ -41,7 +41,7 @@
   let sh = ()=>"#popovers"
   const a = watch(drop,(e)=>{
   console.log(e)
-    sh=()=>toCSS(window.jQuery(e.$el).parents('#fluent-provider'))
+    sh=()=>toCSS(window.jQuery(e.$el).parents('#fluent-provider').children("#popovers"))
     a()
   })
   if (placement.startsWith("auto")) {
@@ -82,20 +82,18 @@
     border-radius: var(--borderRadiusMedium);
     background-color: var(--colorNeutralBackground1)
   }
-  .v-popper__popper.v-popper__popper--shown {
-    transition-property: transform;
-    transition-duration: var(--durationSlower) !important; /**fuck*/
-    transition-timing-function: var(--curveDecelerateMid)! important; /**off */
+  #popovers > .v-popper__popper.v-popper__popper--shown.v_popper__popper--show-from, .v-popper__popper.v-popper__popper--shown.v_popper__popper--hide-to {
+    transform: translate(var(--slide-distance-x), var(--slide-distance-y)); /**floating vue fucking uses translate*/
+    animation-duration: var(--durationSlower); /**fuck*/
+    animation-timing-function: var(--curveDecelerateMid); /**off */
   }
-  .v-popper__popper.v-popper__popper--shown.v_popper__popper--show-from, .v-popper__popper.v-popper__popper--shown.v_popper__popper--hide-to {
-    transform: translate(var(--slide-distance-x), var(--slide-distance-y));
-    opacity: 0;
+  @keyframes popup {
+    
   }
-  .v-popper__popper.v-popper__popper--shown.v_popper__popper--show-to, .v-popper__popper.v-popper__popper--shown.v_popper__popper--hide-from {
+  #popovers > .v-popper__popper.v-popper__popper--shown.v_popper__popper--show-to, .v-popper__popper.v-popper__popper--shown.v_popper__popper--hide-from {
     transform: translate(0,0);
-    opacity: 1;
   }
-  .v-popper__popper--hide-from {
+  #popovers > .v-popper__popper--hide-from {
     transition-property: none;
   }
 

@@ -2,7 +2,7 @@
   <div class="menulist">
     <div role="menu">
       <template v-for="i in items" v-if="items.length"> <!--what-->
-        <fluent-menu-item icon="i.icon" :has-icons="hasIcons">{{i.text}}</fluent-menu-item>
+        <fluent-menu-item :icon="i.icon" :has-icons="hasIcons">{{i.text}}</fluent-menu-item>
       </template>
       <slot v-else></slot>
     </div>

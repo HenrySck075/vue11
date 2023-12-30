@@ -7,6 +7,7 @@ export default defineNuxtConfig({
         "global": true
       },
       {"path": "~/FluentDesign", prefix:"fluent-"},
+      {"path": "~/FluentDesign/extra", prefix:"fluent-"},
       "~/components",
     ]
   },

@@ -1,3 +1,15 @@
+@media screen and (prefers-reduced-motion) {
+  :root {
+    --durationUltraFast: 0.01ms;
+    --durationFaster: 0.01ms;
+    --durationFast: 0.01ms;
+    --durationNormal: 0.01ms;
+    --durationSlow: 0.01ms;
+    --durationSlower: 0.01ms;
+    --durationUltraSlow: 0.01ms;
+  }
+}
+
 [data-theme="light"],
 :root {
   --borderRadiusNone: 0;

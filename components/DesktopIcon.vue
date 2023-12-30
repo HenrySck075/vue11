@@ -1,5 +1,5 @@
 <template>
-  <div style="width: 60px; height: 90px; margin: 4px; border-radius: 4px" :class="{DesktopIcon: true, DesktopIconSelected: selected}" @click="the" @keydown.delete="$nuxt.$deleteIcon(key)">
+  <div style="width: 60px; height: 90px; margin: 4px; border-radius: 4px; position: relative;" :class="{DesktopIcon: true, DesktopIconSelected: selected}" @dblclick="the" @keydown.delete="selected && $nuxt.$deleteIcon(key)">
     <div style="position: absolute; width:40px; height: 40px; left: 12px">
       <img :src="icon" style="width:40px; height: 40px; display:block; position: absolute">
       <img src="@/assets/WindowsIcons/imageres/Shortcut.ico" v-if="isShortcut" style="width:40px; height: 40px;display:block; position: relative">
@@ -13,18 +13,11 @@ export default {
   data: () => {
     return {
       selected: false,
-      waitingForOpen: false,
     }
   },
   methods: {
     the() {
-      if (this.selected && this.waitingForOpen) {
-        this.selected = false; this.waitingForOpen = false; this.callback()
-      }
-      else {
-        this.selected = true; this.waitingForOpen = true;
-        setTimeout(()=>{this.waitingForOpen = false}, 600)
-      }
+      this.callback()
     }
   }
 }

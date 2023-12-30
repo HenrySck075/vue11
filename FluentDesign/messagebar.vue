@@ -1,5 +1,5 @@
 <template>
-  <div role="group" id="messagebar">
+  <component :is="as" role="group" id="messagebar">
     <div id="msgIcon">
       <fluent-icon icon="info"></fluent-icon>
     </div>
@@ -8,16 +8,20 @@
       {{content}}
     </div>
     <div id="msgClose"></div>
-    <div id="msgActions"></div>
-  </div>
+    <div id="msgActions">
+      <slot></slot>
+    </div>
+  </component>
 </template>
 <script setup>
-  const {title,content} = defineProps({
+  const {title,content,as,icon} = defineProps({
+    icon: String,
+    as: "div",
     title: String,
     content: String
   })
 </script>
-<style scoped>
+<style>
   #messagebar {
     grid-template-areas: "icon body actions" "secondaryActions secondaryActions secondaryActions";
     grid-template-columns: auto 1fr auto;
@@ -62,6 +66,7 @@
   #msgActions {
     grid-area: secondaryActions / secondaryActions / secondaryActions / secondaryActions;
     display: flex;
+    justify-content: center;
     column-gap: var(--spacingHorizontalM);
     padding-right: var(--spacingVerticalM);
     margin-top: var(--spacingVerticalMNudge);

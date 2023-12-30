@@ -10,9 +10,9 @@
         </div>
         <div style="display:flex; justify-content: end; position: absolute; bottom: 16px; right: 16px;" id="deviceStatus">
           <!--<template v-if="batteryStatus.dischargingTime !== Infinity">-->
-            <fluent-icon :icon='"Battery"+(batteryStatus.charging?"Charging":"")+batteryStatus.level*10' />
+            <fluent-icon :icon='"battery_"+(batteryStatus.charging?"Charging":"")+batteryStatus.level*10' />
           <!--</template>-->
-          <fluent-icon :icon='connection.type ?? (connection.effectiveType == "4g"?"wifi":connection.effectiveType=="3g"?"wifi3":connection.effectiveType=="2g"?"wifi2":"wifi1")' />
+          <fluent-icon :icon='getConnIcon()' />
         </div>
       </div>
       <div class="login" data-theme="dark"> 
@@ -32,6 +32,7 @@
           <fluent-menu placement="top" style="">
             <fluent-button icon="powerbutton"></fluent-button>
             <template v-slot:menuitem>
+              <fluent-menu-item icon="" @click="login"></fluent-menu-item>
               <fluent-menu-item icon="powerbutton" @click="$nuxt.$shutdown">Shut down</fluent-menu-item>
               <fluent-menu-item icon="refresh">Restart</fluent-menu-item>
             </template>
@@ -46,8 +47,7 @@
 <script setup>
   import {useSwipe,usePointerSwipe,useBreakpoints,breakpointsVuetify} from "@vueuse/core"
   const lock = ref()
-  console.log(lock)
-  
+  console.log(lock) 
   
   const height = computed(()=>lock.value?.offsetHeight)
   const mimimi = watch(lock,(e)=>{
@@ -103,6 +103,9 @@
   const time = ref(padS(d.getHours(),2)+":"+padS(d.getMinutes(),2))
   const date = ref(h.weekday+", "+h.month+" "+h.day)
 
+  function getConnIcon(){
+    return (connection.type ?? "wifi")+(connection.type=="cellular"?"_data":"")+"_"+(connection.effectiveType == "4g"?"1":connection.effectiveType=="3g"?"2":connection.effectiveType=="2g"?"3":"4")
+  }
   setTimeout(()=>setInterval(() => {
     const d = new Date()
     const h = {} 

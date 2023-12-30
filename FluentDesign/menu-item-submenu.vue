@@ -2,7 +2,7 @@
   <fluent-menu v-bind="menuProps" placement="right" :items="items" id="menuitem-submenu">
     <fluent-menu-item v-bind="attr" :icon="icon" :hasIcons="hasIcons">
       <slot></slot>
-      <fluent-icon icon="chevronright" style="display: inline" class="submenu-icon"></fluent-icon>
+      <fluent-icon icon="chevron_right" class="submenu-icon"></fluent-icon>
     </fluent-menu-item>
     <template v-slot:menuitem>
       <slot name="menuitem"></slot>
@@ -33,5 +33,6 @@ import { useAttrs } from 'vue';
     align-items: center;
     display: inline;
     justify-content: center;
+    height: 25px;
   }
 </style>
