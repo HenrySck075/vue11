@@ -1,5 +1,6 @@
 export default defineNuxtConfig({
   css: ["~/assets/FluentDesign.css"],
+
   components: {
     "dirs": [
       {
@@ -11,8 +12,10 @@ export default defineNuxtConfig({
       "~/components",
     ]
   },
+
   modules: ["floating-vue/nuxt", "@vueuse/nuxt"],
   ssr: false,
   plugins: ["~/plugins/jquery.js"],
   devtools: { enabled: true },
+  compatibilityDate: "2024-12-17",
 })
